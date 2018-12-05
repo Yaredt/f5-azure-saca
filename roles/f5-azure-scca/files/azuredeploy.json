@@ -63,7 +63,7 @@
     },
     "VDSSJumpBoxLinuxFileUris": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/f5devcentral/f5-azure-saca/master/savevars.sh"
+      "defaultValue": "https://raw.githubusercontent.com/yaredt/f5-azure-saca/master/savevars.sh"
     },
     "vnetName": {
       "type": "string",

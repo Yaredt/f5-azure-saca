@@ -229,11 +229,11 @@ Click on the following link:
 
 **Azure Government**
 
-* https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ff5devcentral%2Ff5-azure-saca%2Fmaster%2Froles%2Ff5-azure-scca%2Ffiles%2Fazuredeploy.json
+* https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fyaredt%2Ff5-azure-saca%2Fmaster%2Froles%2Ff5-azure-scca%2Ffiles%2Fazuredeploy.json
 
 **Azure Cloud**
 
-* https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Ff5devcentral%2Ff5-azure-saca%2Fmaster%2Froles%2Ff5-azure-scca%2Ffiles%2Fazuredeploy.json
+* https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fyaredt%2Ff5-azure-saca%2Fmaster%2Froles%2Ff5-azure-scca%2Ffiles%2Fazuredeploy.json
 
 You should see.
 
