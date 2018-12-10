@@ -141,7 +141,6 @@
     pool: "{{item.pool}}"
     host: "{{item.host}}"
     port: "{{item.port}}"
-    name: "{{item.name}}"
   with_items:
      "{{setup.pool_members}}"
 - name: Check virtuals

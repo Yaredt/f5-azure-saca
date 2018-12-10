@@ -1,0 +1,87 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "routeTableTag": {
+            "value": "f5-sacaintRouteTag"
+        },
+        "externalIpSelfAddressRangeStart": {
+            "value": "192.168.4.4"
+        },
+        "licenseKey1": {
+            "value": ""
+        },
+        "mgmtSubnetName": {
+            "value": "Management_Subnet"
+        },
+        "bigIpVersion": {
+            "value": "latest"
+        },
+        "vnetResourceGroupName": {
+            "value": "f5-saca"
+        },
+        "imageName": {
+            "value": "Best"
+        },
+        "managedRoutes": {
+            "value": "0.0.0.0/0,172.16.0.0/24,172.16.1.0/24,192.168.0.0/24,192.168.1.0/24,10.0.0.0/22"
+        },
+        "internalIpAddressRangeStart": {
+            "value": "192.168.5.4"
+        },
+        "internalSubnetName": {
+            "value": "F5_Int_Trusted_Subnet"
+        },
+        "instanceName": {
+            "value": "f5-sacaint"
+        },
+        "adminPassword": {
+            "value": "Str0ngP@ssw0rd!"
+        },
+        "vnetName": {
+            "value": "VDSS_VNet"
+        },
+        "servicePrincipalSecret": {
+            "value": "bWxDDfvElZpH4MJcufIS3xk51phrFInlWpWwTbOmc9w="
+        },
+        "adminUsername": {
+            "value": "adminusername"
+        },
+        "externalSubnetName": {
+            "value": "F5_Int_Untrusted_Subnet"
+        },
+        "mgmtIpAddressRangeStart": {
+            "value": "172.16.0.13"
+        },
+        "restrictedSrcAddress": {
+            "value": "*"
+        },
+        "ntpServer": {
+            "value": "0.pool.ntp.org"
+        },
+        "clientId": {
+            "value": "370a7eba-6c1b-4836-94d0-d753afa8eb1a"
+        },
+        "tenantId": {
+            "value": "5b770f07-dfdd-42fa-b01c-18f0e9179f47"
+        },
+        "externalIpAddressRangeStart": {
+            "value": "192.168.4.6"
+        },
+        "licenseKey2": {
+            "value": ""
+        },
+        "dnsLabel": {
+            "value": "f5-sacaint"
+        },
+        "timeZone": {
+            "value": "UTC"
+        },
+        "numberOfExternalIps": {
+            "value": 0
+        },
+        "allowUsageAnalytics": {
+            "value": "No"
+        }
+    }
+}
