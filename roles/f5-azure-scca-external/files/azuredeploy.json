@@ -1,20 +1,3 @@
-Skip to content
- 
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- @Yaredt Sign out
-4
-3 8 f5devcentral/f5-azure-saca
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Insights
-f5-azure-saca/roles/f5-azure-scca-external/files/azuredeploy.json
-7f79dec  22 days ago
-@chen23 chen23 update image sku
-     
-1226 lines (1225 sloc)  74.2 KB
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
     "contentVersion": "4.4.0.0",
@@ -108,6 +91,18 @@ f5-azure-saca/roles/f5-azure-scca-external/files/azuredeploy.json
             "defaultValue": "Good",
             "metadata": {
                 "description": "F5 SKU (IMAGE) to you want to deploy. Note: The disk size of the VM will be determined based on the option you select."
+            },
+            "type": "string"
+        },
+        "licensedBandwidth": {
+            "allowedValues": [
+                "25m-best-hourly",
+                "200m-best-hourly",
+                "1g-best-hourly"
+            ],
+            "defaultValue": "25m-best-hourly",
+            "metadata": {
+                "description": "The amount of licensed bandwidth (Mbps) you want the PAYG image to use."
             },
             "type": "string"
         },
@@ -354,8 +349,8 @@ f5-azure-saca/roles/f5-azure-scca-external/files/azuredeploy.json
         "installCloudLibs": "[concat(variables('singleQuote'), '#!/bin/bash\necho about to execute\nchecks=0\nwhile [ $checks -lt 120 ]; do echo checking mcpd\n/usr/bin/tmsh -a show sys mcp-state field-fmt | grep -q running\nif [ $? == 0 ]; then\necho mcpd ready\nbreak\nfi\necho mcpd not ready yet\nlet checks=checks+1\nsleep 1\ndone\necho loading verifyHash script\n/usr/bin/tmsh load sys config merge file /config/verifyHash\nif [ $? != 0 ]; then\necho cannot validate signature of /config/verifyHash\nexit 1\nfi\necho loaded verifyHash\n\nconfig_loc=\"/config/cloud/\"\nhashed_file_list=\"${config_loc}f5-cloud-libs.tar.gz f5.service_discovery.tmpl ${config_loc}f5-cloud-libs-azure.tar.gz\"\nfor file in $hashed_file_list; do\necho \"verifying $file\"\n/usr/bin/tmsh run cli script verifyHash $file\nif [ $? != 0 ]; then\necho \"$file is not valid\"\nexit 1\nfi\necho \"verified $file\"\ndone\necho \"expanding $hashed_file_list\"\ntar xfz /config/cloud/f5-cloud-libs.tar.gz -C /config/cloud/azure/node_modules\ntar xfz /config/cloud/f5-cloud-libs-azure.tar.gz -C /config/cloud/azure/node_modules/f5-cloud-libs/node_modules\ntouch /config/cloud/cloudLibsReady', variables('singleQuote'))]",
         "dnsLabel": "[toLower(parameters('dnsLabel'))]",
         "imageNameToLower": "[toLower(parameters('imageName'))]",
-        "skuToUse": "f5-big-all-2slot-byol",
-        "offerToUse": "f5-big-ip-byol",
+        "skuToUse": "[concat('f5-bigip-virtual-edition-',parameters('licensedBandwidth'))]",
+        "offerToUse": "f5-big-ip-best",
         "bigIpNicPortValue": "[variables('bigIpNicPortMap')['3'].Port]",
         "bigIpMgmtPort": "[variables('bigIpVersionPortMap')[variables('bigIpNicPortValue')].Port]",
         "instanceName": "[toLower(parameters('instanceName'))]",
@@ -657,7 +652,7 @@ f5-azure-saca/roles/f5-azure-scca-external/files/azuredeploy.json
                 "metricsCmd": "[concat(' --metrics customerId:${custId},deploymentId:${deployId},templateName:ha-avset-existing_stack-chen,templateVersion:4.4.0.0,region:', variables('location'), ',bigIpVersion:', parameters('bigIpVersion') ,',licenseType:BYOL,cloudLibsVersion:', variables('f5CloudLibsTag'), ',cloudName:azure')]"
             }
         },
-        "customConfig": "### START (INPUT) CUSTOM CONFIGURATION HERE\nlocation=$(curl  --interface mgmt -H metadata:true \"http://169.254.169.254/metadata/instance?api-version=2017-08-01\" --stderr /dev/null |jq .compute.location)\n#location=\"\"usgovvirginia\"\"\necho $location | grep -i -E \"(gov|dod)\" > /dev/null;\n#echo $?\nif [ $? == 0 ]\n  then\n  curl https://raw.githubusercontent.com/chen23/f5-cloud-libs-azure/chen-azureusgovernment-1.5/scripts/failoverProvider.js > /config/cloud/azure/node_modules/f5-cloud-libs/node_modules/f5-cloud-libs-azure/scripts/failoverProvider.js\n  else\n  curl https://raw.githubusercontent.com/chen23/f5-cloud-libs-azure/chen-1.5/scripts/failoverProvider.js > /config/cloud/azure/node_modules/f5-cloud-libs/node_modules/f5-cloud-libs-azure/scripts/failoverProvider.js\nfi\n\nf5-rest-node /config/cloud/azure/node_modules/f5-cloud-libs/node_modules/f5-cloud-libs-azure/scripts/failoverProvider.js\n",
+        "customConfig": "### START (INPUT) CUSTOM CONFIGURATION HERE\nlocation=$(curl  --interface mgmt -H metadata:true \"http://169.254.169.254/metadata/instance?api-version=2017-08-01\" --stderr /dev/null |jq .compute.location)\n#location=\"\"usdodcentral\"\"\necho $location | grep -i -E \"(gov|dod)\" > /dev/null;\n#echo $?\nif [ $? == 0 ]\n  then\n  curl https://raw.githubusercontent.com/chen23/f5-cloud-libs-azure/chen-azureusgovernment-1.5/scripts/failoverProvider.js > /config/cloud/azure/node_modules/f5-cloud-libs/node_modules/f5-cloud-libs-azure/scripts/failoverProvider.js\n  else\n  curl https://raw.githubusercontent.com/chen23/f5-cloud-libs-azure/chen-1.5/scripts/failoverProvider.js > /config/cloud/azure/node_modules/f5-cloud-libs/node_modules/f5-cloud-libs-azure/scripts/failoverProvider.js\nfi\n\nf5-rest-node /config/cloud/azure/node_modules/f5-cloud-libs/node_modules/f5-cloud-libs-azure/scripts/failoverProvider.js\n",
         "installCustomConfig": "[concat(variables('singleQuote'), '#!/bin/bash\n', variables('customConfig'), variables('singleQuote'))]"
     },
     "resources": [
@@ -1239,16 +1234,3 @@ f5-azure-saca/roles/f5-azure-scca-external/files/azuredeploy.json
     ],
     "outputs": {}
 }
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Press h to open a hovercard with more details.
