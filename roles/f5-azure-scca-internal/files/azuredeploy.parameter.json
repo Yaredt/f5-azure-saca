@@ -2,86 +2,86 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "routeTableTag": {
-            "value": "f5-sacaintRouteTag"
-        },
-        "externalIpSelfAddressRangeStart": {
-            "value": "192.168.4.4"
-        },
-        "licenseKey1": {
-            "value": ""
-        },
-        "mgmtSubnetName": {
-            "value": "Management_Subnet"
-        },
-        "bigIpVersion": {
-            "value": "latest"
-        },
-        "vnetResourceGroupName": {
-            "value": "f5-saca"
-        },
-        "imageName": {
-            "value": "Best"
-        },
-        "managedRoutes": {
-            "value": "0.0.0.0/0,172.16.0.0/24,172.16.1.0/24,192.168.0.0/24,192.168.1.0/24,10.0.0.0/22"
-        },
-        "internalIpAddressRangeStart": {
-            "value": "192.168.5.4"
-        },
-        "internalSubnetName": {
-            "value": "F5_Int_Trusted_Subnet"
-        },
-        "instanceName": {
-            "value": "f5-sacaint"
-        },
         "adminPassword": {
             "value": "Str0ngP@ssw0rd!"
-        },
-        "vnetName": {
-            "value": "VDSS_VNet"
-        },
-        "servicePrincipalSecret": {
-            "value": "bWxDDfvElZpH4MJcufIS3xk51phrFInlWpWwTbOmc9w="
         },
         "adminUsername": {
             "value": "adminusername"
         },
+        "allowUsageAnalytics": {
+            "value": "No"
+        },
+        "bigIpVersion": {
+            "value": "latest"
+        },
+        "clientId": {
+            "value": "3afacec4-6b15-4fd6-b8c7-0626a3cc5400"
+        },
+        "dnsLabel": {
+            "value": "ozuph-c1-rgp-vdssint"
+        },
+        "externalIpAddressRangeStart": {
+            "value": "10.168.4.6"
+        },
+        "externalIpSelfAddressRangeStart": {
+            "value": "10.168.4.4"
+        },
         "externalSubnetName": {
             "value": "F5_Int_Untrusted_Subnet"
         },
-        "mgmtIpAddressRangeStart": {
-            "value": "172.16.0.13"
+        "imageName": {
+            "value": "Best"
         },
-        "restrictedSrcAddress": {
-            "value": "*"
+        "instanceName": {
+            "value": "ozuph-c1-rgp-vdssint"
         },
-        "ntpServer": {
-            "value": "0.pool.ntp.org"
+        "internalIpAddressRangeStart": {
+            "value": "10.168.5.4"
         },
-        "clientId": {
-            "value": "370a7eba-6c1b-4836-94d0-d753afa8eb1a"
+        "internalSubnetName": {
+            "value": "F5_Int_Trusted_Subnet"
         },
-        "tenantId": {
-            "value": "5b770f07-dfdd-42fa-b01c-18f0e9179f47"
-        },
-        "externalIpAddressRangeStart": {
-            "value": "192.168.4.6"
+        "licenseKey1": {
+            "value": ""
         },
         "licenseKey2": {
             "value": ""
         },
-        "dnsLabel": {
-            "value": "f5-sacaint"
+        "managedRoutes": {
+            "value": "0.0.0.0/0,172.16.0.0/24,172.16.1.0/24,10.168.0.0/24,10.168.1.0/24,10.0.0.0/22"
         },
-        "timeZone": {
-            "value": "UTC"
+        "mgmtIpAddressRangeStart": {
+            "value": "172.16.0.13"
+        },
+        "mgmtSubnetName": {
+            "value": "Management_Subnet"
+        },
+        "ntpServer": {
+            "value": "0.pool.ntp.org"
         },
         "numberOfExternalIps": {
             "value": 0
         },
-        "allowUsageAnalytics": {
-            "value": "No"
+        "restrictedSrcAddress": {
+            "value": "*"
+        },
+        "routeTableTag": {
+            "value": "ozuph-c1-rgp-vdssintRouteTag"
+        },
+        "servicePrincipalSecret": {
+            "value": "4207963a-3c2a-4f7c-ae78-8ddc3cf78e52"
+        },
+        "tenantId": {
+            "value": "5b770f07-dfdd-42fa-b01c-18f0e9179f47"
+        },
+        "timeZone": {
+            "value": "UTC"
+        },
+        "vnetName": {
+            "value": "VDSS_VNet"
+        },
+        "vnetResourceGroupName": {
+            "value": "OZUPH-C1-RGP-VDSS"
         }
     }
 }

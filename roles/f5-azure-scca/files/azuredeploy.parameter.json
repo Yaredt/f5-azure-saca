@@ -9,10 +9,10 @@
             "value": "Str0ngP@ssw0rd!"
         },
         "appId": {
-            "value": "370a7eba-6c1b-4836-94d0-d753afa8eb1a"
+            "value": "3afacec4-6b15-4fd6-b8c7-0626a3cc5400"
         },
         "appPassword": {
-            "value": "bWxDDfvElZpH4MJcufIS3xk51phrFInlWpWwTbOmc9w="
+            "value": "4207963a-3c2a-4f7c-ae78-8ddc3cf78e52"
         },
         "appTenantId": {
             "value": "5b770f07-dfdd-42fa-b01c-18f0e9179f47"
@@ -36,7 +36,7 @@
             "value": "VDSS_VNet"
         },
         "vnetPrefix": {
-            "value": "192.168.0.0/16"
+            "value": "10.168.0.0/16"
         },
         "vnetPrefix2": {
             "value": "172.16.0.0/23"
@@ -45,37 +45,37 @@
             "value": "F5_Ext_Untrusted_Subnet"
         },
         "F5_Ext_Untrusted_SubnetPrefix": {
-            "value": "192.168.0.0/24"
+            "value": "10.168.0.0/24"
         },
         "F5_Ext_Trusted_SubnetName": {
             "value": "F5_Ext_Trusted_Subnet"
         },
         "F5_Ext_Trusted_SubnetPrefix": {
-            "value": "192.168.1.0/24"
+            "value": "10.168.1.0/24"
         },
         "IPS_Untrusted_SubnetName": {
             "value": "IPS_Untrusted_Subnet"
         },
         "IPS_Untrusted_SubnetPrefix": {
-            "value": "192.168.2.0/24"
+            "value": "10.168.2.0/24"
         },
         "IPS_Trusted_SubnetName": {
             "value": "IPS_Trusted_Subnet"
         },
         "IPS_Trusted_SubnetPrefix": {
-            "value": "192.168.3.0/24"
+            "value": "10.168.3.0/24"
         },
         "F5_Int_Untrusted_SubnetName": {
             "value": "F5_Int_Untrusted_Subnet"
         },
         "F5_Int_Untrusted_SubnetPrefix": {
-            "value": "192.168.4.0/24"
+            "value": "10.168.4.0/24"
         },
         "F5_Int_Trusted_SubnetName": {
             "value": "F5_Int_Trusted_Subnet"
         },
         "F5_Int_Trusted_SubnetPrefix": {
-            "value": "192.168.5.0/24"
+            "value": "10.168.5.0/24"
         },
         "Management_SubnetName": {
             "value": "Management_Subnet"
@@ -93,28 +93,28 @@
             "value": "GatewaySubnet"
         },
         "GatewaySubnetPrefix": {
-            "value": "192.168.255.224/27"
+            "value": "10.168.255.224/27"
         },
         "F5_Ext_Trusted_IP": {
-            "value": "192.168.1.5"
+            "value": "10.168.1.5"
         },
         "F5_Int_Trusted_IP": {
-            "value": "192.168.5.5"
+            "value": "10.168.5.5"
         },
         "F5_Ext_Untrusted_IP": {
-            "value": "192.168.0.7"
+            "value": "10.168.0.7"
         },
         "F5_Int_Untrusted_IP": {
-            "value": "192.168.4.7"
+            "value": "10.168.4.7"
         },
         "IPS_Untrusted_IP": {
-            "value": "192.168.2.5"
+            "value": "10.168.2.5"
         },
         "IPS_Trusted_IP": {
-            "value": "192.168.3.5"
+            "value": "10.168.3.5"
         },
         "IPS_Trusted_Gateway_IP": {
-            "value": "192.168.3.1"
+            "value": "10.168.3.1"
         },
         "Gateway_RouteTableName": {
             "value": "Gateway_RouteTable"

@@ -2,101 +2,86 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "adminUsername": {
-            "value": "adminusername"
-        },
         "adminPassword": {
             "value": "Str0ngP@ssw0rd!"
         },
-        "dnsLabel": {
-            "value": "f5-sacaext"
+        "adminUsername": {
+            "value": "adminusername"
         },
-        "instanceName": {
-            "value": "f5-sacaext"
-        },
-        "instanceType": {
-            "value": "Standard_DS3_v2"
-        },
-        "imageName": {
-            "value": "Best"
-        },
-        "licensedBandwidth": {
-            "value": "25m-best-hourly"
+        "allowUsageAnalytics": {
+            "value": "No"
         },
         "bigIpVersion": {
             "value": "latest"
         },
+        "clientId": {
+            "value": "3afacec4-6b15-4fd6-b8c7-0626a3cc5400"
+        },
+        "dnsLabel": {
+            "value": "ozuph-c1-rgp-vdssext"
+        },
+        "externalIpAddressRangeStart": {
+            "value": "10.168.0.6"
+        },
+        "externalIpSelfAddressRangeStart": {
+            "value": "10.168.0.4"
+        },
+        "externalSubnetName": {
+            "value": "F5_Ext_Untrusted_Subnet"
+        },
+        "imageName": {
+            "value": "Best"
+        },
+        "instanceName": {
+            "value": "ozuph-c1-rgp-vdssext"
+        },
+        "internalIpAddressRangeStart": {
+            "value": "10.168.1.4"
+        },
+        "internalSubnetName": {
+            "value": "F5_Ext_Trusted_Subnet"
+        },
         "licenseKey1": {
-            "value": "REQUIRED"
+            "value": ""
         },
         "licenseKey2": {
-            "value": "REQUIRED"
+            "value": ""
+        },
+        "managedRoutes": {
+            "value": "0.0.0.0/0"
+        },
+        "mgmtIpAddressRangeStart": {
+            "value": "172.16.0.11"
+        },
+        "mgmtSubnetName": {
+            "value": "Management_Subnet"
+        },
+        "ntpServer": {
+            "value": "0.pool.ntp.org"
         },
         "numberOfExternalIps": {
-            "value": 1
+            "value": 0
+        },
+        "restrictedSrcAddress": {
+            "value": "*"
+        },
+        "routeTableTag": {
+            "value": "ozuph-c1-rgp-vdssextRouteTag"
+        },
+        "servicePrincipalSecret": {
+            "value": "4207963a-3c2a-4f7c-ae78-8ddc3cf78e52"
+        },
+        "tenantId": {
+            "value": "5b770f07-dfdd-42fa-b01c-18f0e9179f47"
+        },
+        "timeZone": {
+            "value": "UTC"
         },
         "vnetName": {
             "value": "VDSS_VNet"
         },
         "vnetResourceGroupName": {
-            "value": "f5-saca"
-        },
-        "mgmtSubnetName": {
-            "value": "Management_Subnet"
-        },
-        "mgmtIpAddressRangeStart": {
-            "value": "172.16.0.11"
-        },
-        "externalSubnetName": {
-            "value": "F5_Ext_Untrusted_Subnet"
-        },
-        "externalIpSelfAddressRangeStart": {
-            "value": "192.168.0.4"
-        },
-        "externalIpAddressRangeStart": {
-            "value": "192.168.0.6"
-        },
-        "internalSubnetName": {
-            "value": "F5_Ext_Trusted_Subnet"
-        },
-        "internalIpAddressRangeStart": {
-            "value": "192.168.1.4"
-        },
-        "tenantId": {
-            "value": "5b770f07-dfdd-42fa-b01c-18f0e9179f47"
-        },
-        "clientId": {
-            "value": "370a7eba-6c1b-4836-94d0-d753afa8eb1a"
-        },
-        "servicePrincipalSecret": {
-            "value": "bWxDDfvElZpH4MJcufIS3xk51phrFInlWpWwTbOmc9w="
-        },
-        "managedRoutes": {
-            "value": "0.0.0.0/0"
-        },
-        "routeTableTag": {
-            "value": "f5-sacaextRouteTag"
-        },
-        "ntpServer": {
-            "value": "0.pool.ntp.org"
-        },
-        "timeZone": {
-            "value": "UTC"
-        },
-        "restrictedSrcAddress": {
-            "value": "*"
-        },
-        "tagValues": {
-            "value": {
-                "application": "APP",
-                "cost": "COST",
-                "environment": "ENV",
-                "group": "GROUP",
-                "owner": "OWNER"
-            }
-        },
-        "allowUsageAnalytics": {
-            "value": "No"
+            "value": "OZUPH-C1-RGP-VDSS"
         }
     }
 }

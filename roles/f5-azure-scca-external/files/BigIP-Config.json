@@ -1,0 +1,302 @@
+"msg": {
+    "commands": [
+        {
+            "check": "tmsh list /ltm profile fastl4 loose_fastL4",
+            "command": "tmsh create /ltm profile fastl4 loose_fastL4 default                                                                                                                                                             s-from fastL4 loose-close enabled loose-initialization enabled idle-timeout 300                                                                                                                                                              reset-on-timeout disabled",
+            "server": "172.16.0.11"
+        },
+        {
+            "check": "tmsh list /security log profile local-afm-log",
+            "command": "tmsh create /security log profile local-afm-log { ne                                                                                                                                                             twork replace-all-with { local-afm-log { publisher local-db-publisher filter { l                                                                                                                                                             og-acl-match-accept enabled log-acl-match-drop enabled log-acl-match-reject enab                                                                                                                                                             led } } } }",
+            "server": "172.16.0.11"
+        },
+        {
+            "check": "tmsh list /security firewall policy log_all_afm",
+            "command": "tmsh create /security firewall policy log_all_afm ru                                                                                                                                                             les add { allow_all  { action accept log yes place-before first } deny_all { act                                                                                                                                                             ion reject log yes place-after allow_all  }}",
+            "server": "172.16.0.11"
+        },
+        {
+            "check": "tmsh list /ltm virtual-address 0.0.0.0",
+            "command": "create /ltm virtual-address 0.0.0.0 traffic-group no                                                                                                                                                             ne",
+            "server": "172.16.0.11"
+        },
+        {
+            "check": "tmsh list /ltm virtual-address 52.182.52.8",
+            "command": "create /ltm virtual-address 52.182.52.8 traffic-grou                                                                                                                                                             p none",
+            "server": "172.16.0.11"
+        },
+        {
+            "check": "tmsh list /ltm virtual-address 52.182.52.237",
+            "command": "create /ltm virtual-address 52.182.52.237 traffic-gr                                                                                                                                                             oup none",
+            "server": "172.16.0.11"
+        }
+    ],
+    "irules": [
+        {
+            "content": "when HTTP_REQUEST {\n    HTTP::respond 200 content \                                                                                                                                                             "OK\"\n}\n",
+            "name": "is_alive",
+            "server": "172.16.0.11"
+        },
+        {
+            "content": "when CLIENT_ACCEPTED {\n    virtual float_is_alive_v                                                                                                                                                             s\n}\n",
+            "name": "virtual_is_alive",
+            "server": "172.16.0.11"
+        }
+    ],
+    "modules": [
+        {
+            "level": "nominal",
+            "module": "afm",
+            "server": "172.16.0.11"
+        },
+        {
+            "level": "nominal",
+            "module": "afm",
+            "server": "172.16.0.12"
+        }
+    ],
+    "oms": [],
+    "pool_members": [
+        {
+            "host": "172.16.0.4",
+            "name": "172.16.0.4",
+            "pool": "jumpbox_rdp_pool",
+            "port": "3389",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.4",
+            "name": "172.16.0.4",
+            "pool": "jumpbox_rdp_gw_pool",
+            "port": "443",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.5",
+            "name": "172.16.0.5",
+            "pool": "jumpbox_ssh_pool",
+            "port": "22",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.5",
+            "name": "172.16.0.5",
+            "pool": "http_pool",
+            "port": "80",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.5",
+            "name": "172.16.0.5",
+            "pool": "https_pool",
+            "port": "443",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "10.168.4.7",
+            "name": "10.168.4.7",
+            "pool": "ssl_visible_http_pool",
+            "port": "80",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.11",
+            "name": "172.16.0.11",
+            "pool": "bigip_ext1_ssh_pool",
+            "port": "22",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.12",
+            "name": "172.16.0.12",
+            "pool": "bigip_ext2_ssh_pool",
+            "port": "22",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.13",
+            "name": "172.16.0.13",
+            "pool": "bigip_int1_ssh_pool",
+            "port": "22",
+            "server": "172.16.0.11"
+        },
+        {
+            "host": "172.16.0.14",
+            "name": "172.16.0.14",
+            "pool": "bigip_int2_ssh_pool",
+            "port": "22",
+            "server": "172.16.0.11"
+        }
+    ],
+    "pools": [
+        {
+            "name": "jumpbox_rdp_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "jumpbox_rdp_gw_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "jumpbox_ssh_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "http_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "https_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "ssl_visible_http_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "bigip_ext1_ssh_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "bigip_ext2_ssh_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "bigip_int1_ssh_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        },
+        {
+            "name": "bigip_int2_ssh_pool",
+            "partition": "Common",
+            "server": "172.16.0.11"
+        }
+    ],
+    "route_tables": [
+        {
+            "f5_ha": "ozuph-c1-rgp-vdssextRouteTag",
+            "f5_tg": "traffic-group-1",
+            "name": "IPS_Untrust_RouteTable",
+            "resource_group": "OZUPH-C1-RGP-VDSS"
+        }
+    ],
+    "routes": [
+        {
+            "destination": "172.16.0.0/24",
+            "gateway_address": "10.168.1.1",
+            "name": "mgmt",
+            "server": "172.16.0.11"
+        },
+        {
+            "destination": "172.16.1.0/24",
+            "gateway_address": "10.168.1.1",
+            "name": "vdms",
+            "server": "172.16.0.11"
+        },
+        {
+            "destination": "10.168.5.0/24",
+            "gateway_address": "10.168.1.1",
+            "name": "internalvips",
+            "server": "172.16.0.11"
+        },
+        {
+            "destination": "10.0.0.0/8",
+            "gateway_address": "10.168.1.1",
+            "name": "private10",
+            "server": "172.16.0.11"
+        },
+        {
+            "destination": "172.16.0.0/12",
+            "gateway_address": "10.168.1.1",
+            "name": "private172",
+            "server": "172.16.0.11"
+        },
+        {
+            "destination": "192.168.0.0/16",
+            "gateway_address": "10.168.1.1",
+            "name": "private192",
+            "server": "172.16.0.11"
+        }
+    ],
+    "server1": "172.16.0.11",
+    "server2": "172.16.0.12",
+    "servers": [
+        {
+            "server": "172.16.0.11"
+        },
+        {
+            "server": "172.16.0.12"
+        }
+    ],
+    "virtuals": [
+        {
+            "command": "create /ltm virtual jumpbox_rdp_vs destination 52.18                                                                                                                                                             2.52.8:3389 profiles replace-all-with { loose_fastL4 } pool jumpbox_rdp_pool sou                                                                                                                                                             rce-address-translation { type automap } fw-enforced-policy log_all_afm security                                                                                                                                                             -log-profiles replace-all-with { local-afm-log }",
+            "name": "jumpbox_rdp_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual jumpbox_ssh_vs destination 52.18                                                                                                                                                             2.52.8:22 profiles replace-all-with { loose_fastL4 } pool jumpbox_ssh_pool sourc                                                                                                                                                             e-address-translation { type automap } fw-enforced-policy log_all_afm security-l                                                                                                                                                             og-profiles replace-all-with { local-afm-log }",
+            "name": "jumpbox_ssh_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual jumpbox_rdp_gw_vs destination 52                                                                                                                                                             .182.52.8:443 profiles replace-all-with { loose_fastL4 } pool jumpbox_rdp_gw_poo                                                                                                                                                             l source-address-translation { type automap } fw-enforced-policy log_all_afm sec                                                                                                                                                             urity-log-profiles replace-all-with { local-afm-log }",
+            "name": "jumpbox_rdp_gw_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual http_vs destination 52.182.52.23                                                                                                                                                             7:80 profiles replace-all-with {  http } pool http_pool fw-enforced-policy log_a                                                                                                                                                             ll_afm security-log-profiles replace-all-with { local-afm-log }",
+            "name": "http_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual ssl_visible_vs destination 52.18                                                                                                                                                             2.52.237:443 profiles replace-all-with { clientssl http } pool ssl_visible_http_                                                                                                                                                             pool fw-enforced-policy log_all_afm security-log-profiles replace-all-with { loc                                                                                                                                                             al-afm-log }",
+            "name": "ssl_visible_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual ssl_not_visible_vs destination 5                                                                                                                                                             2.182.52.237:8443 profiles replace-all-with { loose_fastL4 } pool https_pool fw-                                                                                                                                                             enforced-policy log_all_afm security-log-profiles replace-all-with { local-afm-l                                                                                                                                                             og }",
+            "name": "ssl_not_visible_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual float_is_alive_vs destination 10                                                                                                                                                             .168.0.7:80 profiles replace-all-with { http } rules { is_alive } fw-enforced-po                                                                                                                                                             licy log_all_afm security-log-profiles replace-all-with { local-afm-log }",
+            "name": "float_is_alive_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual is_alive_vs destination 10.168.0                                                                                                                                                             .4:80 profiles replace-all-with { http } rules { virtual_is_alive } fw-enforced-                                                                                                                                                             policy log_all_afm security-log-profiles replace-all-with { local-afm-log }",
+            "name": "is_alive_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual is_alive_vs destination 10.168.0                                                                                                                                                             .5:80 profiles replace-all-with { http }  rules { virtual_is_alive } fw-enforced                                                                                                                                                             -policy log_all_afm security-log-profiles replace-all-with { local-afm-log }",
+            "name": "is_alive_vs",
+            "server": "172.16.0.12"
+        },
+        {
+            "command": "create /ltm virtual mgmt_outbound_vs destination 0.0                                                                                                                                                             .0.0:0 mask 0.0.0.0 source 172.16.0.0/24 profiles replace-all-with { loose_fastL                                                                                                                                                             4 } ip-forward fw-enforced-policy log_all_afm security-log-profiles replace-all-                                                                                                                                                             with { local-afm-log }     source-address-translation { type automap  }",
+            "name": "mgmt_outbound_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual vdms_outbound_vs destination 0.0                                                                                                                                                             .0.0:0 mask 0.0.0.0 source 172.16.1.0/24 profiles replace-all-with { loose_fastL                                                                                                                                                             4 } ip-forward fw-enforced-policy log_all_afm security-log-profiles replace-all-                                                                                                                                                             with { local-afm-log } source-address-translation { type automap }",
+            "name": "vdms_outbound_vs",
+            "server": "172.16.0.11"
+        },
+        {
+            "command": "create /ltm virtual mo_outbound_vs destination 0.0.0                                                                                                                                                             .0:0 mask 0.0.0.0 source 10.0.0.0/8 profiles replace-all-with { loose_fastL4 } i                                                                                                                                                             p-forward fw-enforced-policy log_all_afm security-log-profiles replace-all-with                                                                                                                                                              { local-afm-log } source-address-translation { type automap }",
+            "name": "mo_outbound_vs",
+            "server": "172.16.0.11"
+        }
+    ]
+}
+}
