@@ -6,16 +6,16 @@
             "value": "adminusername"
         },
         "VDSSJumpBoxAdminPassword": {
-            "value": "Str0ngP@ssw0rd!"
+            "value": ""
         },
         "appId": {
-            "value": "3afacec4-6b15-4fd6-b8c7-0626a3cc5400"
+            "value": ""
         },
         "appPassword": {
-            "value": "4207963a-3c2a-4f7c-ae78-8ddc3cf78e52"
+            "value": ""
         },
         "appTenantId": {
-            "value": "5b770f07-dfdd-42fa-b01c-18f0e9179f47"
+            "value": ""
         },
         "licenseKey1": {
             "value": "1"
